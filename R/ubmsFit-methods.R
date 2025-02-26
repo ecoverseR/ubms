@@ -106,6 +106,7 @@ get_link_name <- function(submodel){
 #'
 #' @param object A \code{ubmsFit} model
 #' @param submodel Name of submodel to summarize
+#' @param probs Numeric vector of quantiles of interest
 #' @param ... Currently ignored
 #'
 #' @return An object of class \code{data.frame} containing summary statistics
@@ -113,20 +114,21 @@ get_link_name <- function(submodel){
 #'
 #' @importFrom unmarked summary
 #' @export
-setMethod("summary", "ubmsFit", function(object, submodel, ...){
+setMethod("summary", "ubmsFit",
+  function(object, submodel, probs = c(0.025,0.25,0.5,0.75,0.975), ...){
   sm <- object[submodel]
-  out <- rstan::summary(object@stanfit, beta_par(sm))
+  out <- rstan::summary(object@stanfit, beta_par(sm), probs = probs)
   out <- as.data.frame(out$summary)
   rownames(out) <- beta_names(sm)
 
   if(has_random(sm)){
-    random <- rstan::summary(object@stanfit, sig_par(sm))
+    random <- rstan::summary(object@stanfit, sig_par(sm), probs = probs)
     random <- as.data.frame(random$summary)
     rownames(random) <- sigma_names(sm)
     out <- rbind(out, random)
   }
   if(has_spatial(sm)){
-    tau <- rstan::summary(object@stanfit, "tau")
+    tau <- rstan::summary(object@stanfit, "tau", probs = probs)
     tau <- as.data.frame(tau$summary)
     rownames(tau) <- "RSR [tau]"
     out <- rbind(out, tau)

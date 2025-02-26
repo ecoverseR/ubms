@@ -64,6 +64,10 @@ test_that("summary method works for ubmsFit",{
   expect_equal(colnames(sum_fit), c("mean","se_mean","sd","2.5%","25%",
                                     "50%","75%","97.5%","n_eff","Rhat"))
   expect_true(all(sapply(sum_fit, inherits, "numeric")))
+
+  # Check probs argument
+  sum_90 <- summary(fit, "state", probs=c(0.05, 0.95))
+  expect_equal(names(sum_90)[4:5], c("5%", "95%"))
 })
 
 test_that("getY method works for ubmsFit",{

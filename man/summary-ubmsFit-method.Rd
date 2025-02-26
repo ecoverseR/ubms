@@ -4,12 +4,14 @@
 \alias{summary,ubmsFit-method}
 \title{Extract Summary Statistics from a ubmsFit Model}
 \usage{
-\S4method{summary}{ubmsFit}(object, submodel, ...)
+\S4method{summary}{ubmsFit}(object, submodel, probs = c(0.025, 0.25, 0.5, 0.75, 0.975), ...)
 }
 \arguments{
 \item{object}{A \code{ubmsFit} model}
 
 \item{submodel}{Name of submodel to summarize}
+
+\item{probs}{Numeric vector of quantiles of interest}
 
 \item{...}{Currently ignored}
 }
