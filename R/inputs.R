@@ -112,6 +112,7 @@ setMethod("get_stan_data", "ubmsSubmodel", function(object, ...){
   X <- model.matrix(object, na.rm=TRUE, warn=TRUE)
   priors <- process_priors(object)
   off <- model_offset(object, na.rm=TRUE)
+  if(length(off) == 1) off <- array(off)
   out <- list(X=X, offset=off, n_obs=nrow(X), n_fixed=ncol(X),
               n_group_vars=n_group_vars, has_random=has_rand, n_random=n_random)
   out <- c(out, Zinfo, priors)
