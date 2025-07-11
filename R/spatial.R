@@ -184,6 +184,11 @@ setMethod("spatial_matrices", "ubmsSubmodelSpatial", function(object, ...){
   message("Building RSR matrices")
   form <- object@spatial
 
+  if(any(object@missing)){
+    stop("Sites with missing covariates not allowed in spatial analysis", 
+         call.=FALSE)
+  }
+
   final_rows <- nrow(object@data) + nrow(object@data_aug)
   data <- rbind(object@data, object@data_aug)
 

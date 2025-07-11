@@ -225,3 +225,22 @@ test_that("ranef run on spatial submodel returns eta", {
   expect_equal(eta_sum$eta$Estimate, eta$eta, tol=1e-5)
 
 })
+
+test_that("Error if missing covariates for a site", {
+
+  umf_na <- umf10
+  umf_na@siteCovs$cov1[2] <- NA
+  expect_error(
+    expect_message(stan_occu(~1~cov1+RSR(x,y,1),
+                   data=umf_na, chains=2, iter=200, refresh=0)),
+    "not allowed"
+  )
+
+  umf_na <- umf10
+  umf_na@siteCovs$x2[6:10] <- NA
+  expect_error(
+    expect_message(stan_occu(~x2~1+RSR(x,y,1),
+                   data=umf_na, chains=2, iter=200, refresh=0)),
+    "not allowed"
+  )
+})

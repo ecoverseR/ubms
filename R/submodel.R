@@ -116,6 +116,7 @@ setMethod("model_offset", "ubmsSubmodel", function(object, newdata=NULL, na.rm=F
     off <- off[!object@missing]
   }
   if(any(is.na(off))) stop("Missing values in offset term are not allowed", call.=FALSE)
+  if(length(off) == 1) off <- array(off)
   off
 })
 
