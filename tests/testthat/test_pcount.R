@@ -216,3 +216,10 @@ test_that("pcount spatial works", {
                 umf2[1:20,], K=15, chains=2, iter=100, refresh=0)))
   expect_is(fit_spat, "ubmsFit")
 })
+
+test_that("Error if mixture other than P specified", {
+  
+  expect_error(stan_pcount(~x3~x1, umf[1:10,], K=15, mixture="NB",
+                     chains=2, iter=100, refresh=0), "Only mixture")
+
+})

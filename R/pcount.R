@@ -55,6 +55,7 @@ stan_pcount <- function(formula,
 
   forms <- split_formula(formula)
   umf <- process_umf(data)
+  if(mixture != "P") stop('Only mixture = "P" supported currently', call.=FALSE)
 
   if(has_spatial(forms)){
     split_umf <- extract_missing_sites(umf)
