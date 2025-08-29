@@ -269,7 +269,6 @@ Instead of AIC, models are compared using leave-one-out cross-validation (LOO) [
 Based on this cross-validation, the expected predictive accuracy (`elpd`) for each model is calculated.
 The model with the largest `elpd` (`fit_global`) performed best.
 The `elpd_diff` column shows the difference in `elpd` between a model and the top model; if this difference is several times larger than the standard error of the difference (`se_diff`), we are confident the model with the larger `elpd` performed better.
-LOO model weights, analogous to AIC weights, are also calculated.
 We can see that the `fit_global` model is clearly the best performing model.
 
 You can obtain LOO information for a single model using the `loo` method:
@@ -297,7 +296,7 @@ fit_top
 
 ### MCMC diagnostics
 
-Again looking at the summary of `fit_top`, we conclude MCMC chains have converged if all $\hat{R} > 1.05$.
+Again looking at the summary of `fit_top`, we conclude MCMC chains have converged if all $\hat{R} < 1.05$.
 To visualize convergence, look at the traceplots:
 
 ```{r}
