@@ -23,7 +23,7 @@ setMethod("plot", "ubmsGOF", function(x, ...){
     geom_point(alpha=0.4) +
     geom_label(data=ppval, aes(x=-Inf, y=Inf, label=.data[["lab"]]),
                hjust=-0.2, vjust=1.4, size=5,
-               fill='white', label.size=0,
+               fill='white', linewidth=0,
                label.padding=unit(0.1, "lines")) +
     ggtitle(paste("Posterior predictive check:", x@statistic)) +
     labs(y="Simulated data", x="Observed data") +
