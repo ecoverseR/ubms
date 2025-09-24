@@ -19,7 +19,7 @@ arma::imat simz_pcount(arma::mat y, arma::mat lam_post, arma::cube p_post,
 
   for (unsigned i=0; i < nsamples; i++){
     for (unsigned m=0; m < M; m++){
-      if(!is_finite(lam_post(m,i))){
+      if(!std::isfinite(lam_post(m,i))){
         Zpost(m,i) = NA_INTEGER;
         continue;
       }
@@ -28,7 +28,7 @@ arma::imat simz_pcount(arma::mat y, arma::mat lam_post, arma::cube p_post,
         pp = R::dpois(k, lam_post(m, i), 0);
         bp = 1.0;
         for (unsigned j=0; j < J; j++){
-          if(!is_finite(y(m,j)) || !is_finite(p_post(m,j,i))){
+          if(!std::isfinite(y(m,j)) || !std::isfinite(p_post(m,j,i))){
             continue;
           }
           bp *= R::dbinom(y(m,j), k, p_post(m,j,i), 0);
@@ -68,7 +68,7 @@ arma::imat simz_occuRN(arma::mat y, arma::mat lam_post, arma::cube r_post,
 
   for (unsigned i=0; i < nsamples; i++){
     for (unsigned m=0; m < M; m++){
-      if(!is_finite(lam_post(m,i))){
+      if(!std::isfinite(lam_post(m,i))){
         Zpost(m,i) = NA_INTEGER;
         continue;
       }
@@ -77,7 +77,7 @@ arma::imat simz_occuRN(arma::mat y, arma::mat lam_post, arma::cube r_post,
         pp = R::dpois(k, lam_post(m, i), 0);
         bp = 1.0;
         for (unsigned j=0; j < J; j++){
-          if(!is_finite(y(m,j))){
+          if(!std::isfinite(y(m,j))){
             continue;
           }
           p = 1 - pow(q(m,j,i), k);
@@ -131,7 +131,7 @@ arma::imat simz_multinom(arma::mat y, arma::mat lam_post, arma::cube p_post,
 
   for (unsigned i=0; i < nsamples; i++){
     for (unsigned m=0; m < M; m++){
-      if(!is_finite(lam_post(m,i))){
+      if(!std::isfinite(lam_post(m,i))){
         Zpost(m,i) = NA_INTEGER;
         continue;
       }

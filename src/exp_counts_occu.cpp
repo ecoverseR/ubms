@@ -9,7 +9,7 @@ double peh_occu(vec obs, int nd, vec p, double psi){
   double cp;
   for (int j=0; j < J; j++){
     cp = p(j)*obs(j) + (1-p(j))*(1-obs(j));
-    if(is_finite(cp)){
+    if(std::isfinite(cp)){
       lik *= cp;
     }
   }
@@ -55,7 +55,7 @@ double peh_occuRN(vec obs, int Kmin, vec r, double lam){
     for (int j=0; j<J; j++){
       p = 1 - pow(q(j), k);
       cp = p*obs(j) + (1-p)*(1-obs(j));
-      if(is_finite(cp)) obs_lik *= cp;
+      if(std::isfinite(cp)) obs_lik *= cp;
     }
     lik += R::dpois(k, lam, 0) * obs_lik;
   }
