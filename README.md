@@ -3,7 +3,7 @@
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/biodiverse/ubms/workflows/R-CMD-check/badge.svg)](https://github.com/biodiverse/ubms/actions)
+status](https://github.com/ecoverseR/ubms/workflows/R-CMD-check/badge.svg)](https://github.com/ecoverseR/ubms/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/ubms)](https://cran.r-project.org/web/packages/ubms/index.html)
 <!-- badges: end -->
@@ -49,7 +49,7 @@ Github:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("biodiverse/ubms")
+devtools::install_github("ecoverseR/ubms")
 ```
 
 ## Package Overview

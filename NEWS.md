@@ -1,3 +1,9 @@
+# ubms 1.2.8
+
+* Add probs argument to summary method
+* Fix deprecated arma::is_finite warnings from CRAN
+* Minor bugfixes
+
 # ubms 1.2.7
 
 * Package links now go to biodiverse Github org
