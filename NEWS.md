@@ -1,4 +1,4 @@
-# ubms 1.2.9 (development)
+# ubms 1.2.9
 
 * Updated compatibility with upcoming changes to `loo_compare()` output
   structure in the `loo` package (> 2.9.0), which now returns a data frame
