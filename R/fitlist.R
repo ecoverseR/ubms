@@ -53,8 +53,15 @@ setMethod("modSel", "ubmsFitList", function(object, ...){
   loos <- lapply(object@models, function(x) x@loo)
   elpd <- sapply(loos, function(x) x$estimates[1])
   p_loo <- sapply(loos, function(x) x$estimates[2])
-  compare <- loo::loo_compare(loos)[names(elpd),]
-  out <- data.frame(elpd=elpd, nparam=p_loo, elpd_diff=compare[,1],
-                    se_diff=compare[,2])
+  compare <- loo::loo_compare(loos)
+  if ("model" %in% colnames(compare)) {
+    compare <- compare[match(names(elpd), compare$model),]
+    out <- data.frame(elpd=elpd, nparam=p_loo, elpd_diff=compare[,2],
+                      se_diff=compare[,3])
+  } else {
+    compare <- loo::loo_compare(loos)[names(elpd),]
+    out <- data.frame(elpd=elpd, nparam=p_loo, elpd_diff=compare[,1],
+                      se_diff=compare[,2])
+  }
   out[order(out$elpd_diff, decreasing=TRUE),]
 })
