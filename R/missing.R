@@ -60,7 +60,7 @@ setMethod("find_missing", "ubmsResponse", function(object, submodels, ...){
   sub_mm <- submodels@submodels
   #Don't include transition parameters when finding missing values
   sub_mm <- sub_mm[!sapply(sub_mm, inherits, "ubmsSubmodelTransition")]
-  #Don't include placeholder parmeters either
+  #Don't include placeholder parameters either
   sub_mm <- sub_mm[!sapply(sub_mm, is_placeholder)]
   sub_mm <- lapply(sub_mm, expand_model_matrix, object)
   comb <- cbind(as_vector(object), do.call("cbind", sub_mm))

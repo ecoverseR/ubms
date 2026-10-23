@@ -69,7 +69,7 @@ mallardUMF <- unmarkedFramePCount(mallard.y, siteCovs=mallard.site)
 
 }
 \references{
-Royle JA. 2004. N-mixture models for estimating populaiton size
+Royle JA. 2004. N-mixture models for estimating population size
  from spatially replicated counts. Biometrics 60: 105-108.
 }
 \seealso{

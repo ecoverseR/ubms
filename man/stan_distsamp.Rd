@@ -59,7 +59,7 @@ number of chains \code{chains} or iterations \code{iter}}
 }
 \description{
 This function fits the hierarchical distance sampling model of Royle
-et al. (2004) to line or point transect data recorded in discerete
+et al. (2004) to line or point transect data recorded in discrete
 distance intervals.
 }
 \note{

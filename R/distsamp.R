@@ -1,7 +1,7 @@
 #' Fit the Royle et al. (2004) Distance Sampling Model
 #'
 #' This function fits the hierarchical distance sampling model of Royle
-#' et al. (2004) to line or point transect data recorded in discerete
+#' et al. (2004) to line or point transect data recorded in discrete
 #' distance intervals.
 #'
 #' @param formula Double right-hand side formula describing covariates of
@@ -138,7 +138,7 @@ setMethod("find_missing", "ubmsResponseDistsamp", function(object, submodels, ..
   sub_mm <- submodels@submodels
   #Don't include transition parameters when finding missing values
   sub_mm <- sub_mm[!sapply(sub_mm, inherits, "ubmsSubmodelTransition")]
-  #Don't include placeholder parmeters either
+  #Don't include placeholder parameters either
   sub_mm <- sub_mm[!sapply(sub_mm, is_placeholder)]
   sub_mm <- lapply(sub_mm, expand_model_matrix, object)
   comb <- cbind(as_vector(object), do.call("cbind", sub_mm))
@@ -422,7 +422,7 @@ setMethod("hist", "ubmsFitDistsamp", function(x, draws=30, ...){
   samples <- get_samples(x, draws)
   hist_data <- get_hist_data(x)
   mean_line <- get_mean_line(x)
- 
+
   out <- ggplot(hist_data, aes(x=.data[["x"]])) +
     geom_histogram(aes(y=after_stat(.data[["density"]])),fill='transparent',
                    col='black',breaks=x@response@dist_breaks)

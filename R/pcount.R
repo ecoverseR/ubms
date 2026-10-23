@@ -36,7 +36,7 @@
 #'                            chains=3, iter=300))
 #' }
 #'
-#' @references Royle JA. 2004. N-mixture models for estimating populaiton size
+#' @references Royle JA. 2004. N-mixture models for estimating population size
 #'  from spatially replicated counts. Biometrics 60: 105-108.
 #'
 #' @seealso \code{\link[unmarked]{pcount}}, \code{\link[unmarked]{unmarkedFramePCount}}

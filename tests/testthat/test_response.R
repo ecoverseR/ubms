@@ -34,7 +34,7 @@ test_that("get_K takes input and generates valid K",{
   expect_error(get_K(resp, 3))
 })
 
-test_that("tranpose method works",{
+test_that("transpose method works",{
   y <- matrix(c(1,0,0,1,1,1,0,0,1), nrow=3, byrow=T)
   y2 <- matrix(c(1,NA,0,1,1,1,0,0,1), nrow=3, byrow=T)
   resp <- ubmsResponse(y, "binomial", "P")
